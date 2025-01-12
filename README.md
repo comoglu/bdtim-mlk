@@ -10,12 +10,13 @@ This plugin implements KOERI's local magnitude calculation formulas for SeisComP
 
 For distances ≤ 200 km:
 ```
-MLk = Log₁₀A - (-1.118-0.0647Δ+0.00071Δ²-3.39x10⁻⁶Δ³+5.71x10⁻⁹Δ⁴)
+MLk = Log₁₀A - (-1.118-0.0647Δ+0.00071Δ²-3.39x10⁻⁶Δ³+5.71x10⁻⁹Δ⁴) "Helmut (Marmara, 2003)"
+"
 ```
 
 For distances > 200 km:
 ```
-MLk = Log₁₀A + 0.0082Δ - 5.9628x10⁻⁶Δ² + 2.1173
+MLk = Log₁₀A + 0.0082Δ - 5.9628x10⁻⁶Δ² + 2.1173 "Görgün (Righter Polinom, 2003)""
 ```
 
 where:
