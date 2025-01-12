@@ -70,15 +70,15 @@ The plugin can be configured through SeisComP's configuration system. Available 
 
 ```ini
 # In global.cfg or similar
-magnitudes.MLk.minSNR = 2.0  # Minimum signal-to-noise ratio
+module.trunk.global.magnitudes.MLk.minSNR = 2.0  # Minimum signal-to-noise ratio
 ```
 
 ### Amplitude Configuration
 
 ```ini
 # In global.cfg or similar
-amplitudes.MLk.maxDist = 8.0  # Maximum distance in degrees
-amplitudes.MLk.filter = ""    # Optional waveform filter
+module.trunk.global.amplitudes.MLk.maxDist = 8.0  # Maximum distance in degrees
+module.trunk.global.amplitudes.MLk.filter = ""    # Optional waveform filter
 ```
 
 ## Usage
