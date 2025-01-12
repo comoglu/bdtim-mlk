@@ -1,0 +1,18 @@
+SET(PLUGIN_TARGET mlk)
+
+SET(
+    PLUGIN_SOURCES
+        mlk.cpp
+)
+
+SET(
+    PLUGIN_HEADERS
+        mlk.h
+)
+
+SC_ADD_PLUGIN_LIBRARY(PLUGIN ${PLUGIN_TARGET} "")
+SC_LINK_LIBRARIES_INTERNAL(${PLUGIN_TARGET} client)
+
+# Install description files
+FILE(GLOB descs "${CMAKE_CURRENT_SOURCE_DIR}/descriptions/*.xml")
+INSTALL(FILES ${descs} DESTINATION ${SC3_PACKAGE_APP_DESC_DIR})

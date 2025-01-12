@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seiscomp>
+    <plugin name="mlk">
+        <extends>global</extends>
+        <description>
+            The MLk plugin implements KOERI's local magnitude calculation formulas.
+            It provides two different calculation methods based on epicentral distance:
+            
+            For distances ≤ 200 km:
+            MLk = Log10A - (-1.118-0.0647Δ+0.00071Δ²-3.39x10⁻⁶Δ³+5.71x10⁻⁹Δ⁴)
+            
+            For distances > 200 km:
+            MLk = Log10A + 0.0082Δ - 5.9628x10⁻⁶Δ² + 2.1173
+            
+            where Δ is the epicentral distance in kilometers and A is the
+            zero-to-peak Wood-Anderson amplitude in millimeters.
+        </description>
+    </plugin>
+    
+    <binding name="mlk" module="global">
+        <description>
+            Configuration options for the KOERI local magnitude (MLk) calculation.
+        </description>
+        <configuration>
+            <group name="magnitudes">
+                <group name="MLk">
+                    <parameter name="minSNR" type="double" default="2.0">
+                        <description>
+                            Minimum signal-to-noise ratio for accepting an MLk magnitude.
+                            Magnitudes with SNR below this threshold will be flagged as
+                            having failed quality control but will still be included in
+                            processing.
+                        </description>
+                    </parameter>
+                </group>
+            </group>
+            
+            <group name="amplitudes">
+                <group name="MLk">
+                    <parameter name="maxDist" type="double" default="8.0" unit="deg">
+                        <description>
+                            Maximum epicentral distance for computing MLk amplitudes.
+                            Stations beyond this distance will not be used.
+                        </description>
+                    </parameter>
+                    
+                    <parameter name="filter" type="string">
+                        <description>
+                            Optional filter to apply to waveform data before amplitude
+                            measurement. If not specified, no filtering will be applied.
+                            Example: "BW(3,0.5,12)"
+                        </description>
+                    </parameter>
+                </group>
+            </group>
+        </configuration>
+    </binding>
+</seiscomp>
